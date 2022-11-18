@@ -4,9 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook {
-    ArrayList<Contacts> list = new ArrayList<>();
 
+    ArrayList<Contacts> list = new ArrayList<>();
     Scanner scr = new Scanner(System.in);
+
+    @Override
+    public String toString() {
+        return "AddressBook{" +
+                "list=" + list +
+                '}';
+    }
 
     void addContact() {
         Contacts contact = new Contacts();
@@ -33,37 +40,41 @@ public class AddressBook {
     void editContact() {
         System.out.println("Enter the first name of person to edit");
         String firstName = scr.next().toLowerCase();
+        System.out.println("Enter the last name of person to edit");
+        String lastName = scr.next().toLowerCase();
 
         boolean found = false;
         for (Contacts contact : list) {
             if (firstName.equals(contact.getFirstName().toLowerCase())) {
-                System.out.println("Edit the details of person");
-                System.out.print("Enter first name: ");
-                contact.setFirstName(scr.next());
+                if (lastName.equals(contact.getLastName())) {
+                    System.out.println("Edit the details of person");
+                    System.out.print("Enter first name: ");
+                    contact.setFirstName(scr.next());
 
-                System.out.print("Enter last Name: ");
-                contact.setLastName(scr.next());
+                    System.out.print("Enter last Name: ");
+                    contact.setLastName(scr.next());
 
-                System.out.print("Enter Email: ");
-                contact.setEmail(scr.next());
+                    System.out.print("Enter Email: ");
+                    contact.setEmail(scr.next());
 
-                System.out.print("Enter address: ");
-                scr.nextLine();
-                contact.setAddress(scr.nextLine());
+                    System.out.print("Enter address: ");
+                    scr.nextLine();
+                    contact.setAddress(scr.nextLine());
 
-                System.out.print("Enter phone number: ");
-                contact.setPhoneNumber(scr.nextLong());
+                    System.out.print("Enter phone number: ");
+                    contact.setPhoneNumber(scr.nextLong());
 
-                System.out.print("Enter state: ");
-                contact.setState(scr.next());
+                    System.out.print("Enter state: ");
+                    contact.setState(scr.next());
 
-                System.out.print("Enter city: ");
-                contact.setCity(scr.next());
+                    System.out.print("Enter city: ");
+                    contact.setCity(scr.next());
 
-                System.out.print("Enter zip: ");
-                contact.setZip(scr.nextInt());
-                found = true;
-                break;
+                    System.out.print("Enter zip: ");
+                    contact.setZip(scr.nextInt());
+                    found = true;
+                    break;
+                }
             }
         }
         if (!found) {
@@ -71,23 +82,29 @@ public class AddressBook {
         }
     }
 
-
     void deleteContact() {
-        System.out.println("Enter the first name of person to delete");
-        String firstName = scr.next().toLowerCase();
-        boolean found = false;
-        for (Contacts contact : list) {
-            if (firstName.equals(contact.getFirstName().toLowerCase())) {
-                list.remove(contact);
-                found = true;
-                System.out.println("Contact deleted successfully");
-                break;
+        if (list.isEmpty()) {
+            System.out.println("Address book is empty");
+        } else {
+            System.out.println("Enter the first name of person to delete");
+            String firstName = scr.next().toLowerCase();
+            System.out.println("Enter the last name of person to delete");
+            String lastName = scr.next().toLowerCase();
+            boolean found = false;
+            for (Contacts contact : list) {
+                if (firstName.equals(contact.getFirstName().toLowerCase())) {
+                    if (lastName.equals(contact.getLastName())) {
+                        list.remove(contact);
+                        found = true;
+                        System.out.println("Contact deleted successfully");
+                        break;
+                    }
+                }
+            }
+            if (!found) {
+                System.out.println("No contact found");
             }
         }
-        if (!found) {
-            System.out.println("No contact found");
-        }
-
     }
 
     void displayContacts() {
@@ -100,4 +117,3 @@ public class AddressBook {
         }
     }
 }
-
