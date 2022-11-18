@@ -57,10 +57,21 @@ public class AddressBook {
 
             System.out.println("Enter zip");
             contact.setZip(scr.nextInt());
-        } else {
+        }
+        else {
             System.out.println("Person not found");
         }
+    }
 
+    void deleteContact() {
+        System.out.println("Enter the first name of person to delete");
+        String firstName = scr.next();
+
+        if (firstName.equals(contact.getFirstName())) {
+            contact = null;
+        } else {
+            System.out.println("no contact found");
+        }
     }
 
     Contacts display() {
