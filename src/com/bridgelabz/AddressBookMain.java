@@ -1,35 +1,55 @@
 package com.bridgelabz;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBookMain {
     public static void main(String[] args) {
-        System.out.println("Welcome to AddressBook System");
-        AddressBook add = new AddressBook();
+        HashMap<String, AddressBook> map = new HashMap<>();
         Scanner scr = new Scanner(System.in);
+        System.out.println("Welcome to AddressBook System");
         boolean exit = true;
-        do {
-            System.out.println("Enter options:\n1) To add contact\n2) To edit Contact\n3) To display Contacts\n4) To delete contact\n5) To exit");
+        while (exit) {
+            AddressBook add = new AddressBook();
+            System.out.println("Enter address book name");
+            String addressBookName = scr.next().toLowerCase();
+            if (map.containsKey(addressBookName)) {
+                System.out.println("address book already exist");
+            } else {
+                map.put(addressBookName, add);
+            }
+
+            System.out.println("""
+                    Enter options:
+                    1) To add contact
+                    2) To edit Contact
+                    3) To display Contacts
+                    4) To delete contact
+                    5) To exit""");
             int option = scr.nextInt();
             switch (option) {
                 case 1:
-                    add.addContact();
+                    map.get(addressBookName).addContact();
                     break;
                 case 2:
-                    add.editContact();
+                    map.get(addressBookName).editContact();
                     break;
                 case 3:
-                    add.displayContacts();
+                    map.get(addressBookName).displayContacts();
                     break;
                 case 4:
-                    add.deleteContact();
+                    map.get(addressBookName).deleteContact();
                     break;
                 case 5:
                     exit = false;
+                    break;
+                case 6:
+
                 default:
                     break;
             }
-        } while (exit);
+        }
+        System.out.println(map);
     }
 }
 
