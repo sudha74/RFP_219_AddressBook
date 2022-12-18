@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e7ad5c69-28e0-4c3e-8349-8cb186228f39" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RFP_219_AddressBook/com/bridgelabz/AddressBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFP_219_AddressBook/com/bridgelabz/AddressBook.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RFP_219_AddressBook/com/bridgelabz/AddressBookMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFP_219_AddressBook/com/bridgelabz/AddressBookMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/bridgelabz/AddressBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bridgelabz/AddressBook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/bridgelabz/AddressBookMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bridgelabz/AddressBookMain.java" afterDir="false" />
     </list>
