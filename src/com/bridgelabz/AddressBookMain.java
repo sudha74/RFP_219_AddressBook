@@ -1,11 +1,8 @@
 package com.bridgelabz;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBookMain {
-
     static Scanner scr = new Scanner(System.in);
     static AddressBook addressBook;
     static HashMap<String, AddressBook> map = new HashMap<>();
