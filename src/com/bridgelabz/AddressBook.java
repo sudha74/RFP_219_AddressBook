@@ -42,8 +42,6 @@ public class AddressBook {
         System.out.print("Enter email address: ");
         contact.setEmail(scr.next());
         list.add(contact);
-//                cityDictionary.put(contact,contact.getCity());
-//                stateDictionary.put(contact,contact.getState());
     }
 
 
@@ -198,6 +196,7 @@ public class AddressBook {
                             }
                         }
                     }
+                    System.out.println("No of contacts in city " + city + " are " + cityDictionary.size());
                     System.out.println("Contacts in city " + city + " are:");
                     System.out.println(cityDictionary.keySet());
                     break;
@@ -211,6 +210,7 @@ public class AddressBook {
                             }
                         }
                     }
+                    System.out.println("No of contacts in state " + state + " are " + stateDictionary.size());
                     System.out.println("Contacts in state " + state + " are:");
                     System.out.println(stateDictionary.keySet());
                     break;
