@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -9,7 +10,7 @@ public class AddressBook {
     Scanner scanner = new Scanner(System.in);
 
 
-    void addContact() {
+    void addContact() throws IOException {
         System.out.println("Enter the first name");
         String firstName = scanner.next().toLowerCase();
         System.out.println("Enter the last name");
@@ -29,13 +30,14 @@ public class AddressBook {
         scanner.nextLine();
         contact.setAddress(scanner.nextLine());
         System.out.print("Enter Zipcode: ");
-        contact.setZip(scanner.nextInt());
+        contact.setZip(scanner.next());
         System.out.print("Enter phone Number: ");
-        contact.setPhoneNumber(scanner.nextInt());
+        contact.setPhoneNumber(scanner.next());
         System.out.print("Enter email address: ");
         contact.setEmail(scanner.next());
         list.sort(Comparator.comparing(Contacts::getFirstName));
         list.add(contact);
+        writeData();
     }
 
 
@@ -67,7 +69,7 @@ public class AddressBook {
                         contact.setAddress(scanner.nextLine());
 
                         System.out.print("Enter phone number: ");
-                        contact.setPhoneNumber(scanner.nextInt());
+                        contact.setPhoneNumber(scanner.next());
 
                         System.out.print("Enter state: ");
                         contact.setState(scanner.next());
@@ -76,7 +78,7 @@ public class AddressBook {
                         contact.setCity(scanner.next());
 
                         System.out.print("Enter zip: ");
-                        contact.setZip(scanner.nextInt());
+                        contact.setZip(scanner.next());
                         found = true;
                         break;
                     }
@@ -90,13 +92,14 @@ public class AddressBook {
     }
 
 
-    void displayContact() {
+    void displayContact() throws IOException {
         if (list.isEmpty()) {
             System.out.println("No contacts in the addressBook");
             return;
         }
         list.sort(Comparator.comparing(Contacts::getFirstName));
-        list.forEach(System.out::println);
+//        list.forEach(System.out::println);
+        readData();
     }
 
 
@@ -125,6 +128,16 @@ public class AddressBook {
         }
     }
 
+
+    void writeData() throws IOException {
+        FileIOService fileIOService = new FileIOService();
+        fileIOService.writeData();
+    }
+
+    void readData() throws IOException {
+        FileIOService fileIOService = new FileIOService();
+        fileIOService.readData();
+    }
 
     void viewContacts() {
         if (list.isEmpty()) {
@@ -165,7 +178,6 @@ public class AddressBook {
                     for (AddressBook addressBooks : AddressBookMain.map.values()) {
                         List<Contacts> contactsStateList = addressBooks.list.stream().filter(x -> x.getState().toLowerCase().equals(state)).collect(Collectors.toList());
                         if (stateDictionary.containsKey(state)) {
-
                             stateDictionary.get(state).addAll(contactsStateList);
                         } else
                             stateDictionary.put(state, contactsStateList);
